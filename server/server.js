@@ -1,11 +1,10 @@
-const express = require("express")
-const mongoose = require("mongoose")
-const cors = require("cors")
-const dotenv = require("dotenv")
+const app = require('./config/index');
+const express = require('express')
+const cors = require("cors");
+const router = require('./routes/user.route');
 
-const PORT = 5050
-const app = express()
-
-dotenv.config()
 app.use(express.json())
-app.use(cors())
+app.use(cors());
+
+
+app.use(router);
