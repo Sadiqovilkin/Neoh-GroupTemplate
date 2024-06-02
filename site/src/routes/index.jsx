@@ -7,7 +7,7 @@ import Collections from "../pages/Client/Collections/Collections";
 import Home from "../pages/Client/Home/Home";
 import Register from "../pages/Client/Register/Register";
 
-export const ROUTER = [
+export const ROUTES = [
 
 
     // Admin Root
