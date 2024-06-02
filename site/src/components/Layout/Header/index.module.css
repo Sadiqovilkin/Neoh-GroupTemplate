@@ -1,0 +1,174 @@
+
+header{
+    padding: 20px 0;
+    background-color: #111111;
+    position: fixed;
+    width: 100%;
+}
+
+.headerContainer{
+    width: 80%;
+    margin: 0 auto;
+}
+.innerHead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo img{
+    width: 40px;
+    height: 40px;
+}
+
+.textBar{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 10px 65px 10px 10px;
+    position: relative;
+}
+
+.textBar .menuText{
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #ccc;
+    letter-spacing: 1px;
+}
+
+.textBar .barButton {
+    width: 50px;
+    height: 15px;
+    position: absolute;
+    right: 0;
+    border: 0;
+    background: none;
+}
+
+.textBar .barButton .oneSp{
+   top: 0;
+   left: 0;
+   position: absolute;
+   width: 50px;
+   height: 1px !important;
+   background-color: #aaa;
+}
+
+.textBar .barButton .twoSp{
+    top: 7px;
+    left: 0;
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    background-color: #aaa;
+ }
+
+ .textBar .barButton .threeSp{
+    top: 14px;
+    left: 0;
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    background-color: #aaa;
+ }
+
+ /* nav */
+
+
+ .navRow{
+    display: flex;
+ }
+
+ .close{
+    position: absolute;
+    top: 30px;
+    right: 73px;
+ }
+
+ .closeText{
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #78f701;
+    letter-spacing: 1px;
+ }
+
+ .closeOneSp{
+    top: 6px;
+    transform: rotate(45deg);
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    background-color: #aaa;
+    left: 0;
+    transition: all .3s ease;
+ }
+
+ .closeThreeSp{
+    top: 6px;
+    transform: rotate(-45deg);
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    background-color: #aaa;
+    left: 0;
+    transition: all .3s ease;
+ }
+.navMenu{
+    padding: 110px 60px;
+}
+
+.navMenu ul li{
+    margin-bottom: 15px;
+}
+
+ .navLeft{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+ }
+
+ .navRight{
+    position: fixed;
+    height: 100vh;
+    width: 50%;
+    min-width: 850px;
+    z-index: 999;
+    background-color: #111;
+    right: 0;
+    top: 0;
+ }
+
+
+
+ /* nav footer */
+
+
+ .navFooter{
+    padding: 32px 68px 35px 68px;
+    bottom: 0;
+    position: absolute;
+    border-top: 1px solid rgb(36, 36, 36);
+    width: 100%;
+ }
+
+ .footerRow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+
+ .ftrleft p{
+    font-size: 16px;
+    color: #aaa;
+   
+ }
+
+ .ftrright li{
+    font-size: 20px;
+    color: #aaa;
+ }
