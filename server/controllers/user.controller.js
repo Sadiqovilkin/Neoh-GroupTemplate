@@ -159,7 +159,7 @@ const user_controller = {
       const user = await UserModel.findOne({email:email});
       if(user){
         await UserModel.findByIdAndUpdate(user._id,{isVerified: true});
-        res.redirect('http://localhost:5173/sign-in');
+        res.redirect('http://localhost:5173/login');
         return;
       }
       else{
