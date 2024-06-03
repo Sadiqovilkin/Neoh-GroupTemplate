@@ -4,6 +4,7 @@ header{
     background-color: #111111;
     position: fixed;
     width: 100%;
+    border-bottom: 1px solid rgb(46, 45, 45);
 }
 
 .headerContainer{

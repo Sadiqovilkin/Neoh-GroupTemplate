@@ -1,5 +1,6 @@
 import React from 'react'
 import Banner from './Banner/Banner'
+import NftCard from './NftCard/NftCard'
 
 const Home = () => {
   return (
@@ -7,6 +8,7 @@ const Home = () => {
 
       <main>
         <Banner />
+        <NftCard />
       </main>
 
     </>

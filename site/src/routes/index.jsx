@@ -36,7 +36,7 @@ export const ROUTES = [
 
             {
                 index: true,
-                elment: <Home />
+                element: <Home />
             },
             {
                 path: "about",
