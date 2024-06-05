@@ -1,0 +1,34 @@
+@import "../../../scss/partial/variable";
+section {
+  background-color: $light_black;
+  padding: 150px 0;
+  height: 100vh;
+  form {
+    background-color: $dark_black;
+    border-radius: 7px;
+    text-align: center;
+
+    color: $white;
+    padding: 25px 20px;
+    input{
+      background-color: $light_black !important;
+      color: $white;
+      border: 1px solid $light_green !important;
+      margin-bottom: 18px !important;
+      &::placeholder {
+        
+        color: #fff !important;
+      }
+    }
+    .btns {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      button {
+        background-color: $light_green;
+      }
+    }
+  }
+}

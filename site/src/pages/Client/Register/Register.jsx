@@ -4,6 +4,7 @@ import { useDataContext } from '../../../context/context';
 import userSchema from '../../../validations/User.validations';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import "../ClientLogin/LoginPage.scss"
 const Register = () => {
 
   const {userPost} = useDataContext()
@@ -39,7 +40,10 @@ const Register = () => {
   })
   return (
   <section>
-       <form onSubmit={formik.handleSubmit}>
+       <div className="container">
+        <div className="row  justify-content-center ">
+          <div className="col-lg-6">
+          <form onSubmit={formik.handleSubmit}>
         <input placeholder="username" className="form-control my-2" id="username" name="username" type="text" onChange={formik.handleChange} value={formik.values.username} />
         {formik.errors.username ? <div style={{color:"red"}}>{formik.errors.username}</div> : null}
         <input placeholder="email" className="form-control my-2" id="email" name="email" type="email" onChange={formik.handleChange} value={formik.values.email} />
@@ -51,6 +55,9 @@ const Register = () => {
 
         <button type="submit" className="btn btn-success ">Submit</button>
       </form>
+          </div>
+        </div>
+       </div>
   </section>
   )
 }

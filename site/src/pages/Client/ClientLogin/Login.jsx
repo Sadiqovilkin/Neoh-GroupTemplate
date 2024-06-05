@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
 import { useDataContext } from '../../../context/context';
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import { useFormik } from 'formik';
 import bcrypt from 'bcryptjs-react'
 import controller from '../../../services/requests';
@@ -100,14 +100,23 @@ const Login = () => {
   });
   return (
     <section id='clientLogin'>
-          <form onSubmit={formik.handleSubmit}>
+          <div className="container">
+            <div className="row justify-content-center ">
+              <div className="col-lg-5">
+              <form onSubmit={formik.handleSubmit}>
         <input placeholder="email" className="form-control my-2" id="email" name="email" type="email" onChange={formik.handleChange} value={formik.values.email} />
         {formik.errors.email ? <div style={{color:"red"}}>{formik.errors.email}</div> : null}
         <input placeholder="password" className="form-control my-2" id="password" name="password" type="password" onChange={formik.handleChange} value={formik.values.password} />
         {formik.errors.password ? <div style={{color:"red"}}>{formik.errors.password}</div> : null}
         
+        <div className="btns">
+        <Link to={"/register"}>Create Accaunt?</Link>
         <button type="submit" className="btn btn-success ">Submit</button>
+        </div>
       </form>
+              </div>
+            </div>
+          </div>
     </section>
   )
 }
