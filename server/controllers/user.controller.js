@@ -4,6 +4,9 @@ const dotenv = require("dotenv");
 dotenv.config();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const generateAccessToken = require("../helpers/generateAccessToken.js");
+
+
 
 const user_controller = {
   getAll: async (req, res) => {
@@ -125,10 +128,12 @@ const user_controller = {
         function (err, response) {
           if (response) {
             if (user.isVerified == true) {
+              const token = generateAccessToken(user);
               res.send({
                 message: "signed in successfully",
                 auth: true,
                 user: user,
+                token: token,
               });
             } else {
               res.send({

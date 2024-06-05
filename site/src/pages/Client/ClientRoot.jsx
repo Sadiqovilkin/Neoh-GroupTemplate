@@ -8,7 +8,7 @@ const ClientRoot = () => {
   const [userID, setUserID] = useState(localID ? localID : null);
   return (
     <>
-    <Header/>
+    <Header userID={userID}  setUserID={setUserID} setLocalUserID={setLocalUserID}/>
     <Outlet  context={[setUserID, setLocalUserID]}/>
     </>
   )

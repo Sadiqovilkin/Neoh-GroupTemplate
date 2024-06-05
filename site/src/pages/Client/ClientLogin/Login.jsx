@@ -7,6 +7,7 @@ import { useDataContext } from '../../../context/context';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { useFormik } from 'formik';
 import bcrypt from 'bcryptjs-react'
+import controller from '../../../services/requests';
 const Login = () => {
   const {users} = useDataContext()
   const [setUserID, setLocalUserID,] = useOutletContext();
@@ -18,79 +19,83 @@ const Login = () => {
       password: "",
     },
     // validationSchema: loginValidation,
-    onSubmit:  (values) => {
-      
-      
-      const foundUsers = users.find(
-        (x) =>
-          x.email == values.email &&
-          x.role == "client"
-      );
-      console.log(foundUsers);
-      if (foundUsers) {
-        bcrypt.compare(values.password, foundUsers.password).then((match) => {
-          if(!match){
+    onSubmit: async ({ email, password }) => {
+        const response =await controller.post("login",{email:email,password:password})
+      console.log(response);
+      console.log(response.token);
+      if (response.auth) {
+        setUserID(response.user._id);
+            setLocalUserID(response.user._id);
+                   //token
+            const token = response.token;
+            Cookies.set('token', token, {expires: 1});
             Swal.fire({
-              position: "top-end",
-              icon: "error",
-              title: "email or password inCorrect",
-              showConfirmButton: false,
-              timer: 1500
-            })
-          }
-          else{
-            setUserID(foundUsers._id);
-            setLocalUserID(foundUsers._id);
-            //token
-            // const token = response.token;
-            // Cookies.set('token', token, {expires: 1});
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "User succses login",
-              showConfirmButton: false,
-              timer: 1500
-            }).then(()=>{
+                      position: "top-end",
+                      icon: "success",
+                      title: "User succses login",
+                      showConfirmButton: false,
+                      timer: 1500
+                    }).then(()=>{
+            
+                      navigate('/');
+                    })
+      }
+      else{
+        Swal.fire({
+                  position: "top-end",
+                  icon: "error",
+                  title: "email or password inCorrect",
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+      }
+      // const foundUsers = users.find(
+      //   (x) =>
+      //     x.email == values.email &&
+      //     x.role == "client"
+      // );
+      // console.log(foundUsers);
+      // if (foundUsers) {
+      //   bcrypt.compare(values.password, foundUsers.password).then((match) => {
+      //     if(!match){
+      //       Swal.fire({
+      //         position: "top-end",
+      //         icon: "error",
+      //         title: "email or password inCorrect",
+      //         showConfirmButton: false,
+      //         timer: 1500
+      //       })
+      //     }
+      //     else{
+      //       setUserID(foundUsers._id);
+      //       setLocalUserID(foundUsers._id);
+      //       //token
+      //       // const token = response.token;
+      //       // Cookies.set('token', token, {expires: 1});
+      //       Swal.fire({
+      //         position: "top-end",
+      //         icon: "success",
+      //         title: "User succses login",
+      //         showConfirmButton: false,
+      //         timer: 1500
+      //       }).then(()=>{
     
-              navigate('/');
-            })
-          }
-      });
+      //         navigate('/');
+      //       })
+      //     }
+      // });
      
        
-      } else {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "some problem ",
-          showConfirmButton: false,
-          timer: 1500
-        });
-      }
-      // if (response.auth) {
-      //   formik.resetForm();
-      //   dispatch(login(response.user));
-      //   //token
-      //   const token = response.token;
-      //   Cookies.set('token', token, {expires: 1});
-      //   Swal.fire({
-      //     position: "top-end",
-      //     icon: "success",
-      //     title: response.message,
-      //     showConfirmButton: false,
-      //     timer: 1000,
-      //   }).then(() => {
-      //     navigate("/");
-      //   });
       // } else {
       //   Swal.fire({
-      //     position: "top-end",
+      //     position: "center",
       //     icon: "error",
-      //     title: response.message,
+      //     title: "some problem ",
       //     showConfirmButton: false,
-      //     timer: 1000,
+      //     timer: 1500
       //   });
       // }
+
     },
   });
   return (
