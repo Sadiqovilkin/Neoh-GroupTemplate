@@ -6,8 +6,9 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaPinterestP } from "react-icons/fa";
 import { FaBehance } from "react-icons/fa";
-
-const Header = () => {
+import Swal from "sweetalert2";
+import Cookies from "js-cookie";
+const Header = ({userID, setUserID, setLocalUserID }) => {
     const [nav, setNav] = useState("d-none")
     return (
         <>
@@ -48,11 +49,46 @@ const Header = () => {
                             <div className={classes.navContent}>
                                 <div className={classes.navMenu}>
                                     <ul className='m-0 p-0'>
-                                        <li><Link style={{ fontSize: "36px", color: "white" }} to={"/"}>Home</Link></li>
+                                        { userID ? (<>
+                                            <li><Link style={{ fontSize: "36px", color: "white" }} to={"/"}>Home</Link></li>
+                                        <li><Link style={{ fontSize: "36px", color: "white" }} to={"about"}>About</Link></li>
+                                        <li><Link style={{ fontSize: "36px", color: "white" }} to={"collections"}>Collections</Link></li>
+                                        <li><Link onClick={() => {
+                  Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!",
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      setUserID(null);
+                      setLocalUserID(null);
+                      Cookies.remove('token');
+                      Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success",
+                      }).then(() => {
+                        navigate("/login");
+                      });
+                    }
+                  });
+                }} style={{ fontSize: "36px", color: "white" }} >LogOut</Link></li>
+                                        
+                                        </>)
+                                        :<>
+                                                                                <li><Link style={{ fontSize: "36px", color: "white" }} to={"/"}>Home</Link></li>
                                         <li><Link style={{ fontSize: "36px", color: "white" }} to={"about"}>About</Link></li>
                                         <li><Link style={{ fontSize: "36px", color: "white" }} to={"collections"}>Collections</Link></li>
                                         <li><Link style={{ fontSize: "36px", color: "white" }} to={"register"}>Sign up</Link></li>
                                         <li><Link style={{ fontSize: "36px", color: "white" }} to={"login"}>Sign in</Link></li>
+                                        </>
+                                        
+                                        }
+
                                     </ul>
                                 </div>
                             </div>
