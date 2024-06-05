@@ -1,7 +1,36 @@
 #banner {
-    background-image: url('https://static1.srcdn.com/wordpress/wp-content/uploads/2020/06/Valorant-Bind.jpg');
+    background-image: url('https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt08fc3908e36e16de/5f0e84140395fe7f7bb115f4/VALORANT_Maps_Article_Banner.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
     height: 100vh;
+}
+
+.overlay{
+    background-color: rgba(0, 0, 0, 0.507);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.overlay .bannertext{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+}
+
+.bannertext h2{
+    font-size: 120px;
+    letter-spacing: 30px;
+    text-transform: uppercase;
+    font-family: "Tilt Neon", sans-serif;
+}
+
+.bannertext p{
+    font-size: 24px;
+    color: #999;
 }

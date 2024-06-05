@@ -35,7 +35,7 @@ export const ROUTES = [
         element: <ClientRoot/>,
         children: [
             {
-                path: '',
+                index: true,
                 element: <Home />
             },
             {
