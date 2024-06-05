@@ -9,6 +9,7 @@ const Banner = () => {
           <p >The collection built by and runby codeefly.     <br /> Together we are strong than ever.</p>
         </div>
       </div>
+
     </section>
   )
 }

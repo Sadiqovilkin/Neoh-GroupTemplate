@@ -4,15 +4,15 @@ import NftCard from './NftCard/NftCard'
 
 const Home = () => {
   return (
+
     <>
 
       <main>
         <Banner />
         <NftCard />
+
       </main>
-
     </>
-
   )
 }
 

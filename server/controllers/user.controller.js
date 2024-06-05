@@ -4,6 +4,9 @@ const dotenv = require("dotenv");
 dotenv.config();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const generateAccessToken = require("../helpers/generateAccessToken.js");
+
+
 
 const user_controller = {
   getAll: async (req, res) => {
@@ -116,7 +119,7 @@ const user_controller = {
   user_login: async (req, res) => {
     const user = await UserModel.findOne({
       email: req.body.email,
-      role: "client" || "journalist",
+      role: "client",
     });
     if (user) {
       bcrypt.compare(
@@ -125,10 +128,12 @@ const user_controller = {
         function (err, response) {
           if (response) {
             if (user.isVerified == true) {
+              const token = generateAccessToken(user);
               res.send({
                 message: "signed in successfully",
                 auth: true,
                 user: user,
+                token: token,
               });
             } else {
               res.send({
@@ -159,7 +164,7 @@ const user_controller = {
       const user = await UserModel.findOne({email:email});
       if(user){
         await UserModel.findByIdAndUpdate(user._id,{isVerified: true});
-        res.redirect('http://localhost:5173/sign-in');
+        res.redirect('http://localhost:5173/login');
         return;
       }
       else{

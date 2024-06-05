@@ -5,6 +5,7 @@ import Login from "../pages/Client/ClientLogin/Login";
 import ClientRoot from "../pages/Client/ClientRoot";
 import Collections from "../pages/Client/Collections/Collections";
 import Home from "../pages/Client/Home/Home";
+
 import Register from "../pages/Client/Register/Register";
 
 export const ROUTES = [
@@ -31,9 +32,8 @@ export const ROUTES = [
     // Client Root
     {
         path: '/',
-        element: <ClientRoot />,
+        element: <ClientRoot/>,
         children: [
-
             {
                 index: true,
                 element: <Home />
