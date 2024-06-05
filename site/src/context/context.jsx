@@ -12,7 +12,7 @@ const DataContextProvider = ({ children }) => {
 
     // User Reguests
     const userGetAll = async () => {
-        await axios.get(BASE_URL).then((res) => {
+        await axios.get(BASE_URL  + `${endpoints.Users}`).then((res) => {
             setUsers(res.data.data);
         });
     };
@@ -33,7 +33,7 @@ const DataContextProvider = ({ children }) => {
         });
     };
     const userPost = async (payload) => {
-        await axios.delete(BASE_URL, payload).then(() => {
+        await axios.post(BASE_URL+ `${endpoints.Users}`, payload).then(() => {
             setUsers([...users, payload]);
         });
     };
